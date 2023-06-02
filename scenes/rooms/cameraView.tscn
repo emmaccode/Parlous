@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ljme7g6jpbv7"]
+
+[ext_resource type="PackedScene" uid="uid://bmnnr6xtrxrkp" path="res://scenes/rooms/doors.tscn" id="1_g8r15"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="doors" parent="." instance=ExtResource("1_g8r15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -43.9709)
+slidingSpeed = 1.4
+fullOpenDistance = 1.0
+
+[editable path="doors"]
