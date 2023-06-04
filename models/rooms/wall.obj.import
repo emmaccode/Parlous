@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://boauyodd82lxy"
+path="res://.godot/imported/wall.obj-5378a1ca6eaa1eadcd0b6a08c3b75ef8.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wall.obj-5378a1ca6eaa1eadcd0b6a08c3b75ef8.mesh"]
+
+source_file="res://models/rooms/wall.obj"
+dest_files=["res://.godot/imported/wall.obj-5378a1ca6eaa1eadcd0b6a08c3b75ef8.mesh", "res://.godot/imported/wall.obj-5378a1ca6eaa1eadcd0b6a08c3b75ef8.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
