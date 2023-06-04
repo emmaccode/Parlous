@@ -66,3 +66,4 @@ func _slideDoors(delta):
 	
 signal openDoor
 signal closeDoor
+

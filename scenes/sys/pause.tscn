@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dljg21rsyafi6"]
+
+[ext_resource type="Theme" uid="uid://oon8k517ejfw" path="res://scenes/ui_theme.tres" id="1_mouwv"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_mouwv")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1917.0
+offset_bottom = 1079.0

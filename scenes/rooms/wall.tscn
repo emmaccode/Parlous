@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://bv4moqj65jawg"]
+
+[ext_resource type="ArrayMesh" uid="uid://boauyodd82lxy" path="res://models/rooms/wall.obj" id="1_s28ek"]
+[ext_resource type="Texture2D" uid="uid://dsx4lmj1x8hsa" path="res://images/tex/corregated.png" id="2_cknrc"]
+[ext_resource type="ArrayMesh" uid="uid://b8ghc733cabx6" path="res://models/rooms/door.obj" id="2_ea0rp"]
+[ext_resource type="Script" path="res://scripts/rooms/door_script.gd" id="2_sve4i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ci5bs"]
+albedo_texture = ExtResource("2_cknrc")
+albedo_texture_force_srgb = true
+
+[sub_resource type="Animation" id="Animation_qimbr"]
+resource_name = "doors_open"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("door1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.532277, -0.0196432, -0.0305464, 1, 1, 0.216384, -0.0196432, -0.0305464)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("door2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.723154, -0.00855243, -0.0305464, 1, 1, -0.337306, -0.00855243, -0.0305464)
+
+[sub_resource type="Animation" id="Animation_sqxag"]
+resource_name = "doors_open"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("door1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.3, -0.02, -0.031, 1, 1, 0.546843, -0.0196432, -0.0305464)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("door2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.25, -0.009, -0.031, 1, 1, -0.735948, -0.00855243, -0.0305464)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d8u0e"]
+_data = {
+"doors_close": SubResource("Animation_qimbr"),
+"doors_open": SubResource("Animation_sqxag")
+}
+
+[node name="wall" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.1679)
+mesh = ExtResource("1_s28ek")
+surface_material_override/0 = SubResource("StandardMaterial3D_ci5bs")
+script = ExtResource("2_sve4i")
+
+[node name="door1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.216384, -0.0196432, -0.0305464)
+mesh = ExtResource("2_ea0rp")
+skeleton = NodePath("")
+
+[node name="door2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.337306, -0.00855243, -0.0305464)
+mesh = ExtResource("2_ea0rp")
+skeleton = NodePath("")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_d8u0e")
+}
+
+[node name="Button" type="Button" parent="."]
+offset_right = 928.0
+offset_bottom = 304.0
+text = "test door"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.421882, 1.34041)
+fov = 98.4375
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
