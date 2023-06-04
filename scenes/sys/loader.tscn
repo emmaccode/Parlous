@@ -1,6 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://bb54twtrqor6k"]
+[gd_scene load_steps=6 format=3 uid="uid://bb54twtrqor6k"]
 
 [ext_resource type="Script" path="res://scripts/sys/loader.gd" id="1_4b501"]
+
+[sub_resource type="Animation" id="Animation_xa01x"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2jvpm"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vvlsy"]
+_data = {
+"fade_in": SubResource("Animation_2jvpm"),
+"fade_out": SubResource("Animation_xa01x")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1iwu6"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="loader" type="Control"]
 layout_mode = 3
@@ -10,3 +49,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4b501")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vvlsy")
+}
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1927.0
+offset_bottom = 1086.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1iwu6")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 604.0
+offset_top = 392.0
+offset_right = 1186.0
+offset_bottom = 593.0
+text = "sample button"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="on_fade_finish"]
+[connection signal="pressed" from="Button" to="." method="test_load"]

@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh2m31pbieba4"]
+
+[ext_resource type="Texture2D" uid="uid://bylpl83o2my2r" path="res://images/sys/parlous.png" id="1_2qqtl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mq7kv"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1072.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mq7kv")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 808.0
+offset_top = 576.0
+offset_right = 1095.0
+offset_bottom = 650.0
+text = "multiplayer"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 808.0
+offset_top = 496.0
+offset_right = 1095.0
+offset_bottom = 570.0
+text = "single player"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 808.0
+offset_top = 656.0
+offset_right = 1095.0
+offset_bottom = 730.0
+text = "settings"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 256)
+texture = ExtResource("1_2qqtl")
